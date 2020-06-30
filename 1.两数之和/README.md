@@ -109,7 +109,7 @@
 
 ---
 
-### 方法四：一遍位运算
+### 方法四：一遍数组
 
 这是运算最快的，但是这个有个限制，就是 `target` 和 `nums` 中的数不能大于等于 `volume` ，不然会出现重复数。
 比如 2049 & 2047 = 1，1 & 2047 = 1。
@@ -151,7 +151,7 @@
 方法二三中用到了 `HashMap` 中的一个 `containsKey` 函数
 
 ```java
-final Node<K,V> getNode(int hash, Object key) {
+	final Node<K,V> getNode(int hash, Object key) {
         Node<K,V>[] tab; Node<K,V> first, e; int n; K k;
         if ((tab = table) != null && (n = tab.length) > 0 &&
             (first = tab[(n - 1) & hash]) != null) {
