@@ -22,17 +22,16 @@
 暴力法很简单，遍历每个元素 x，并查找是否存在一个值与 target - x 相等的目标元素。
 
 ```java
-    public int[] twoSum(int[] nums, int target) {
-        for (int i = 0; i < nums.length; i++) {
-            for (int j = i + 1; j < nums.length; j++) {
-                if (nums[j] == target - nums[i]) {
-                    return new int[]{i, j};
-                }
+public int[] twoSum(int[] nums, int target) {
+    for (int i = 0; i < nums.length; i++) {
+        for (int j = i + 1; j < nums.length; j++) {
+            if (nums[j] == target - nums[i]) {
+                return new int[]{i, j};
             }
         }
-        throw new IllegalArgumentException("No two sum solution");
     }
-
+    throw new IllegalArgumentException("No two sum solution");
+}
 ```
 
 **复杂度分析：**
@@ -51,20 +50,19 @@
 一个简单的实现使用了两次迭代。在第一次迭代中，我们将每个元素的值和它的索引添加到表中。然后，在第二次迭代中，我们将检查每个元素所对应的目标元素（target - nums[i]）是否存在于表中。注意，该目标元素不能是 nums[i]  本身！
 
 ```java
-    public int[] twoSum2(int[] nums, int target) {
-        Map<Integer, Integer> map = new HashMap<>();
-        for (int i = 0; i < nums.length; i++) {
-            map.put(nums[i], i);
-        }
-        for (int i = 0; i < nums.length; i++) {
-            int complement = target - nums[i];
-            if (map.containsKey(complement) && map.get(complement) != i) {
-                return new int[]{i, map.get(complement)};
-            }
-        }
-        throw new IllegalArgumentException("No two sum solution");
+public int[] twoSum2(int[] nums, int target) {
+    Map<Integer, Integer> map = new HashMap<>();
+    for (int i = 0; i < nums.length; i++) {
+        map.put(nums[i], i);
     }
-
+    for (int i = 0; i < nums.length; i++) {
+        int complement = target - nums[i];
+        if (map.containsKey(complement) && map.get(complement) != i) {
+            return new int[]{i, map.get(complement)};
+        }
+    }
+    throw new IllegalArgumentException("No two sum solution");
+}
 ```
 
 复杂度分析：
@@ -82,17 +80,17 @@
 在进行迭代并将元素插入到表中的同时，我们还会回过头来检查表中是否已经存在当前元素所对应的目标元素。如果它存在，那我们已经找到了对应解，并立即将其返回。
 
 ```java
-	public int[] twoSum3(int[] nums, int target) {
-        Map<Integer, Integer> map = new HashMap<>();
-        for (int i = 0; i < nums.length; i++) {
-            int complement = target - nums[i];
-            if (map.containsKey(complement)) {
-                return new int[]{map.get(complement), i};
-            }
-            map.put(nums[i], i);
+public int[] twoSum3(int[] nums, int target) {
+    Map<Integer, Integer> map = new HashMap<>();
+    for (int i = 0; i < nums.length; i++) {
+        int complement = target - nums[i];
+        if (map.containsKey(complement)) {
+            return new int[]{map.get(complement), i};
         }
-        throw new IllegalArgumentException("No two sum solution");
+        map.put(nums[i], i);
     }
+    throw new IllegalArgumentException("No two sum solution");
+}
 ```
 
 时间复杂度：*O*(n)，
@@ -103,9 +101,9 @@
 
 力扣执行结果：
 
-执行用时：3 ms, 在所有 Java 提交中击败了75.86%的用户
+执行用时：3 ms, 在所有 Java 提交中击败了 75.86% 的用户
 
-内存消耗：39.7 MB, 在所有 Java 提交中击败了5.06%的用户
+内存消耗：39.7 MB, 在所有 Java 提交中击败了 5.06% 的用户
 
 ---
 
@@ -117,19 +115,19 @@
 原理和方法三差不多，只是不用哈希表，用了数组，数组下标对应的数为 1 就表示已存在，也表示找到了对应的解，利用数组加快了速度，但有了一个限制。
 
 ```java
-	public int[] twoSum4(int[] nums, int target) {
-        int volume = 2048; //100000000000
-        int bitMode = volume - 1;//011111111111
-        int[] result = new int[volume];
-        for (int i=0;i<nums.length;i++){
-            int c = (target - nums[i]) & bitMode;//防止数组越界
-            if (result[c]!=0){
-                return new int[]{result[c]-1,i};
-            }
-            result[nums[i] & bitMode]=i+1;
+public int[] twoSum4(int[] nums, int target) {
+    int volume = 2048; //100000000000
+    int bitMode = volume - 1;//011111111111
+    int[] result = new int[volume];
+    for (int i=0;i<nums.length;i++){
+        int c = (target - nums[i]) & bitMode;//防止数组越界
+        if (result[c]!=0){
+            return new int[]{result[c]-1,i};
         }
-        throw new IllegalArgumentException("No two sum solution");
-  	}
+        result[nums[i] & bitMode]=i+1;
+    }
+    throw new IllegalArgumentException("No two sum solution");
+}
 ```
 
 时间复杂度：*O*(n)，
@@ -144,32 +142,32 @@
 
 内存消耗：39.6 MB, 在所有 Java 提交中击败了 5.06% 的用户
 
-
+---
 
 ## 加量不加价
 
 方法二三中用到了 `HashMap` 中的一个 `containsKey` 函数
 
 ```java
-	final Node<K,V> getNode(int hash, Object key) {
-        Node<K,V>[] tab; Node<K,V> first, e; int n; K k;
-        if ((tab = table) != null && (n = tab.length) > 0 &&
-            (first = tab[(n - 1) & hash]) != null) {
-            if (first.hash == hash && // always check first node
-                ((k = first.key) == key || (key != null && key.equals(k))))
-                return first;
-            if ((e = first.next) != null) {
-                if (first instanceof TreeNode)
-                    return ((TreeNode<K,V>)first).getTreeNode(hash, key);
-                do {
-                    if (e.hash == hash &&
-                        ((k = e.key) == key || (key != null && key.equals(k))))
-                        return e;
-                } while ((e = e.next) != null);
-            }
+final Node<K,V> getNode(int hash, Object key) {
+    Node<K,V>[] tab; Node<K,V> first, e; int n; K k;
+    if ((tab = table) != null && (n = tab.length) > 0 &&
+        (first = tab[(n - 1) & hash]) != null) {
+        if (first.hash == hash && // always check first node
+            ((k = first.key) == key || (key != null && key.equals(k))))
+            return first;
+        if ((e = first.next) != null) {
+            if (first instanceof TreeNode)
+                return ((TreeNode<K,V>)first).getTreeNode(hash, key);
+            do {
+                if (e.hash == hash &&
+                    ((k = e.key) == key || (key != null && key.equals(k))))
+                    return e;
+            } while ((e = e.next) != null);
         }
-        return null;
     }
+    return null;
+}
 ```
 
 这里边有一个 `do while` 循环，但它不是肯定走循环的，只有在遍历冲突走链表的时候才会走循环。同时如果冲突频繁，会改用 `getTreeNode` 方法去获取值，`getTreeNode` 是从一棵红黑树中获取值, 时间复杂度顶多 `O(logN)`
