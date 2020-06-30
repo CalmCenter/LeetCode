@@ -144,6 +144,10 @@ public int[] twoSum4(int[] nums, int target) {
 
 ---
 
+还有各种自己实现映射的~ 各种看不懂的~ 就不写了。
+
+---
+
 ## 加量不加价
 
 方法二三中用到了 `HashMap` 中的一个 `containsKey` 函数
