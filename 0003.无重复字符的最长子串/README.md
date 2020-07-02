@@ -66,7 +66,7 @@
                 occ.add(s.charAt(rk + 1));
                 ++rk;
             }
-            // 第 i 到 rk 个字符是一个极长的无重复字符子串
+            // 第 i 到 rk 个字符是一个无重复字符子串
             max = Math.max(max, rk - i + 1);
 
 
@@ -140,10 +140,8 @@ abcbaabcdf ga adebc
             }
 
             max = Math.max(max, i - repeatValue);
-					 //(repeatValue)最大的重复字符下标，右面的字符数量 <= 最大子串数量，则循环没有意义，即使剩下的全部连续不重复也和最大子串一样长
-            if (max >= length - repeatValue - 1) {
-                return max;
-            }
+					 
+
 
 //            for (int n = 0; n < repeatValue+1; n++) {
 //                System.out.print(s.charAt(n));
@@ -157,7 +155,12 @@ abcbaabcdf ga adebc
 //                System.out.print(s.charAt(n));
 //            }
 //            System.out.println();
-
+          
+            //(repeatValue)最大的重复字符下标，右面的字符数量 <= 最大子串数量，则循环没有意义，即使剩下的全部连续不重复也和最大子串一样长
+            if (max >= length - repeatValue - 1) {
+                return max;
+            }
+          
             map.put(element, i);
 
         }
@@ -193,12 +196,6 @@ abcbaabcdf ga adebc
             // 比如 abcabcdade 中的三个 a 的计算  abca - a(3 - 0)=bca   abcabcda - abca(7 - 3)=bcda
             maxSize = Math.max(maxSize, i - repeatValue);
 
-            //s.length() - repeatValue - 1 判断剩下的数有没有必要继续循环
-          	//(repeatValue)最大的重复字符下标，右面的字符数量 <= 最大子串数量，则循环没有意义，即使剩下的全部连续不重复也和最大子串一样长
-            if (maxSize >= s.length() - repeatValue - 1) {
-                return maxSize;
-            }
-
 //            for (int n = 0; n < repeatValue+1; n++) {
 //                System.out.print(s.charAt(n));
 //            }
@@ -212,6 +209,12 @@ abcbaabcdf ga adebc
 //            }
 //            System.out.println();
 
+            //s.length() - repeatValue - 1 判断剩下的数有没有必要继续循环
+            //(repeatValue)最大的重复字符下标，右面的字符数量 <= 最大子串数量，则循环没有意义，即使剩下的全部连续不重复也和最大子串一样长
+            if (maxSize >= s.length() - repeatValue - 1) {
+                return maxSize;
+            }
+          
             i++;
         }
         return maxSize;
