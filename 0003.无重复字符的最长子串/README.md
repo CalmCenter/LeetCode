@@ -170,7 +170,7 @@ abcbaabcdf ga adebc
 
 ### 方法  3：数组
 
-这种方式和方法二思路一样，速度比方法二快，但是有数值限制，不可以是中文字符。
+这种方式和方法二思路一样，速度比方法一，方法二都快，但是有数值限制，不可以是中文字符。
 
 ```java
     public int lengthOfLongestSubstring(String s) {
