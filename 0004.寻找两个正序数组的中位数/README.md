@@ -82,7 +82,7 @@ B: 1 2 3 4 5 6 7 8 9
 通过`A[2]` 和 B[2] 的比较 `3 < 4` ，又由于数组是有序的，所以我们就找到 `3` 个最小值啦！就将这三个标记，假装不在这个数组里。
 然后计算新一轮还需要找多少个最小的值，`remaining - remaining / 2（7 - 3 = 4）`，我们还需要找最小的四个值。
 
-然后重复二分法。每个数组各两个。
+然后重复二分法。 `remaining / 2 = 2` 每个数组各两个。
 
 ```java
 A: 1 3 4 9
@@ -91,7 +91,7 @@ B: [1 2 3] 4 5 6 7 8 9
              ↑
 ```
 
-又可以找到最小的 `2` 个值。数组 `A` 中的 `[1 3]`。 `remaining = 4 - 2 = 2`。那就是每个数组各一个。
+又可以找到最小的 `2` 个值。数组 `A` 中的 `[1 3]`。 `remaining = 4 - 2 = 2`。 `remaining / 2 = 1`那就是每个数组各一个。
 
 ```java
 A: [1 3] 4 9
@@ -185,46 +185,89 @@ B: [1 2 3] 4 5 6 7 8 9
 
 ### 方法 2：数组
 
+思路：
 
+首先取第一个数组一半的位置（向下取整） `int min1 = (left + right) / 2;`  暂定数组 `A` 中有两个小值
+所有数组 `B` 需要找到剩下的所有小值（向上取整） `int min2 = (length1 + length2 + 1) / 2 - min1;` 
 
+这里命名为 `min` 是因为，这里在下图中其实是下标，按数量讲的话就标记了这个下标之前有几个小值。
 
+我们需要做的是在数组 `A` 中找到合适的 `min1` 使得 `B[min2 -1] ≤ A[min1]` 且 `A[min1 -1] ≤ B[min2]`
+
+上面需要做的，等价于  `A[min1 -1] ≤ B[min2]` ，我们只需要记录最后一组成立的中位线位置就可以。
+每次成立让 `min1 + 1` 让 `min2 -1` ，不成立让 `min1 - 1` 让 `min2 + 1`  
+
+```
+A: 1 3 | 4 9
+         ↑ 
+B: 1 2 3 4 5 | 6 7 8 9 
+							↑ 
+```
+
+第一次比较，这里判断 `3 < 6`  成立，所以记录分割线 **左边的最大值 5 ** 和 **右边的最小值 4** 并且移动两个数组的指针。
+
+```
+A: 1 3 4 | 9
+        	 ↑ 
+B: 1 2 3 4 | 5 6 7 8 9 
+						↑ 
+```
+
+第二次比较，这里判断 `4 < 5`  成立，所以记录分割线 **左边的最大值 4 ** 和 **右边的最小值 5** 并且移动两个数组的指针。
+
+```
+A: 1 3 4 9 | ∞
+        	   ↑ 
+B: 1 2 3 | 4 5 6 7 8 9 
+					↑ 
+```
+
+第三次比较，这里 `9 > 4`  ，不记录分割线，数组 `A` 也循环完了，所以中位线就是第二次比较时记录的 `4` 和 `5` 。
 
 ```java
-    public double findMedianSortedArrays2(int[] nums1, int[] nums2) {
+    public double findMedianSortedArrays(int[] nums1, int[] nums2) {
         if (nums1.length > nums2.length) {
             return findMedianSortedArrays2(nums2, nums1);
         }
 
-        int m = nums1.length;
-        int n = nums2.length;
-        int left = 0, right = m, ansi = -1;
+        int length1 = nums1.length;
+        int length2 = nums2.length;
+        //第一个数组的左右指针
+        int left = 0, right = length1, ansi = -1;
         // median1：前一部分的最大值
         // median2：后一部分的最小值
         int median1 = 0, median2 = 0;
 
         while (left <= right) {
-            // 前一部分包含 nums1[0 .. i-1] 和 nums2[0 .. j-1]
-            // 后一部分包含 nums1[i .. m-1] 和 nums2[j .. n-1]
-            int i = (left + right) / 2;
-            int j = (m + n + 1) / 2 - i;
+            // 前一部分包含 nums1[0 .. min1-1] 和 nums2[0 .. min2-1]
+            // 后一部分包含 nums1[min1 .. length1-1] 和 nums2[min2 .. length2-1]
+            int min1 = (left + right) / 2;
+            int min2 = (length1 + length2 + 1) / 2 - min1;//找到剩下的所有小值
 
-            // nums_im1, nums_i, nums_jm1, nums_j 分别表示 nums1[i-1], nums1[i], nums2[j-1], nums2[j]
-            int nums_im1 = (i == 0 ? Integer.MIN_VALUE : nums1[i - 1]);
-            int nums_i = (i == m ? Integer.MAX_VALUE : nums1[i]);
-            int nums_jm1 = (j == 0 ? Integer.MIN_VALUE : nums2[j - 1]);
-            int nums_j = (j == n ? Integer.MAX_VALUE : nums2[j]);
+            // nums1_left 表示第一个数组分割线左边  nums1_right 表示第一个数组 分割线右边
+            int nums1_left = (min1 == 0 ? Integer.MIN_VALUE : nums1[min1 - 1]);
+            int nums1_right = (min1 == length1 ? Integer.MAX_VALUE : nums1[min1]);
+            int nums2_left = (min2 == 0 ? Integer.MIN_VALUE : nums2[min2 - 1]);
+            int nums2_right = (min2 == length2 ? Integer.MAX_VALUE : nums2[min2]);
 
-            if (nums_im1 <= nums_j) {
-                ansi = i;
-                median1 = Math.max(nums_im1, nums_jm1);
-                median2 = Math.min(nums_i, nums_j);
-                left = i + 1;
+            if (nums1_left <= nums2_right) {
+                ansi = min1;
+                median1 = Math.max(nums1_left, nums2_left);
+                median2 = Math.min(nums1_right, nums2_right);
+                left = min1 + 1;
             } else {
-                right = i - 1;
+                right = min1 - 1;
             }
         }
-
-        return (m + n) % 2 == 0 ? (median1 + median2) / 2.0 : median1;
+        //如果两个数组长度是偶数，则让中位线左右两边的数加起来除2，就是最终的中位数
+        //由于找到剩下的所有小值时是向上取整，左边比右边多一个数。所以如果是奇数，中位线左边的数就是中位数
+        return (length1 + length2) % 2 == 0 ? (median1 + median2) / 2.0 : median1;
     }
 ```
+
+**复杂度分析** 
+
+时间复杂度：*O*(log min(m,n)))，其中 m 和 n 分别是数组 nums1 和  nums2 的长度。查找的区间是 [0,m]，而该区间的长度在每次循环之后都会减少为原来的一半。所以，只需要执行 log m 次循环。由于每次循环中的操作次数是常数，所以时间复杂度为 *O*(log m)。由于我们可能需要交换 nums1 和  m≤n ，因此时间复杂度是 *O*(log min(m,n)))。
+
+空间复杂度：O(1)。
 
