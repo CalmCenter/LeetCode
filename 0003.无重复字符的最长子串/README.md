@@ -51,7 +51,7 @@
 
 ```java
     public int lengthOfLongestSubstring(String s) {
-        // 哈希集合，记录每个字符是否出现过
+        // 哈希集合，记录每个字符是否出现过，如果存在某个字符，从头(左指针)开始删除，直到不再包含，然后操作右指针。
         Set<Character> occ = new HashSet<>();
         int length = s.length();
         // 右指针，初始值为 -1，相当于我们在字符串的左边界的左侧，还没有开始移动
@@ -69,7 +69,6 @@
             // 第 i 到 rk 个字符是一个无重复字符子串
             max = Math.max(max, rk - i + 1);
 
-
 //            for (int n = 0; n < i; n++) {
 //                System.out.print(s.charAt(n));
 //            }
@@ -83,9 +82,8 @@
 //            }
 //            System.out.println();
 
-
             //如果当前左指针右面的字符长度<当前最长子串，则退出循环。
-            //毕竟能走到这就证明 occ 中还存在重复，或者右指针已经走完了。剩下的数据已经不可能比当前子串长了。
+            //毕竟能走到这就证明 occ 中还存在重复，或者右指针已经走完了。证明剩下的数据已经不可能比当前子串长了。
             if (max >= length - i - 1) {
                 return max;
             }
@@ -113,6 +111,12 @@ abcbaabcdf ga adebc
 因为没有办法定位 `a` 的之前数据的位置，所以得一次次循环删除前面的数据，直到 `occ.contains(a)` 通过。
 但由于剩下的数据肯定不可能比当前最大值大了，所以提前推出。
 
+**复杂度分析**
+
+- 时间复杂度：O(N)，其中 N 是字符串的长度。左指针和右指针分别会遍历整个字符串一次。
+
+- 空间复杂度：O(∣Σ∣)，其中 Σ 表示字符集（即字符串中可以出现的字符），∣Σ∣ 表示字符集的大小。在本题中没有明确说明字符集，因此可以默认为所有 ASCII 码在 [0,128) 内的字符，即 ∣Σ∣=128。我们需要用到哈希集合来存储出现过的字符，而字符最多有 ∣Σ∣ 个，因此空间复杂度为 O(∣Σ∣)。
+
 ### 方法  2：HashMap
 
 思路：
@@ -128,6 +132,7 @@ abcbaabcdf ga adebc
 ```java
     public int lengthOfLongestSubstring(String s) {
         int length = s.length();
+      	//最长子串的长度
         int max = 0;
         Map<Character, Integer> map = new HashMap<>();
         //repeatValue 最大的重复字符的下标
@@ -138,10 +143,7 @@ abcbaabcdf ga adebc
             if (map.containsKey(element)) {
                 repeatValue = Math.max(map.get(element), repeatValue);
             }
-
             max = Math.max(max, i - repeatValue);
-					 
-
 
 //            for (int n = 0; n < repeatValue+1; n++) {
 //                System.out.print(s.charAt(n));
@@ -160,9 +162,7 @@ abcbaabcdf ga adebc
             if (max >= length - repeatValue - 1) {
                 return max;
             }
-          
             map.put(element, i);
-
         }
         return max;
     }
@@ -171,6 +171,10 @@ abcbaabcdf ga adebc
 ### 方法  3：数组
 
 这种方式和方法二思路一样，速度比方法一，方法二都快，但是有数值限制，不可以是中文字符。
+
+将字符对应的 `ASCII` 码，保存在数组下标为 `ASCII` 的位置，值为字符的下标。
+
+出现重复字符时，`dict[ASCII]` 将不再是 `-1` ，如果 `dict[ASCII] > repeatValue` 当前重复的下标 > 记录的最大下标，刷新 `repeatValue` ，重新计算 `maxSize`。
 
 ```java
     public int lengthOfLongestSubstring(String s) {

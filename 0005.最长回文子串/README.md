@@ -260,7 +260,6 @@ S     E
                 p[i]++;
                 left--;
                 right++;
-
             }
             // 根据 maxRight 的定义，它是遍历过的 i 的 i + p[i] 的最大者
             // 如果 maxRight 的值越大，进入上面 i < maxRight 的判断的可能性就越大，这样就可以重复利用之前判断过的回文信息了
