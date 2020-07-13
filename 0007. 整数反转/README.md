@@ -29,5 +29,46 @@
 
 ### 方法  1 ：弹出和推入数字 & 溢出前进行检查
 
+弹出和推入操作，在下面代码中说明了
+
+但是当推入的时候 `rev = rev * 10 + pop;` 很可能溢出。
+
+假设 `rev` 为正数
+
+如果  `rev = rev * 10 + pop` 溢出，则有两种情况
+
+- 在未添加 `pop` 时，`rev` 已经大于了 `Integer.MAX_VALUE / 10` ，所以在添加一位的时候肯定会溢出
+- 在未添加 `pop` 时，`rev` 等于  `Integer.MAX_VALUE / 10`  ，只要最后一位大于 `7` ，最终值就比 `Integer.MAX_VALUE(2147483647)` 大，最终导致溢出。
+
+```java
+    public int reverse(int x) {
+        int rev = 0;
+        while (x != 0) {
+            //取最后一位
+            int pop = x % 10;
+            //去掉最后一位
+            x /= 10;
+            //这两个过程 叫 弹出最后一位
+
+            //判断最大情况，
+            //当前值 大于 214748364 的时候，最后一位不管是多少，都超过了 2147483647
+            //当前值 等于 214748364 且 当前要推入的值 > 7
+            if (rev > Integer.MAX_VALUE / 10 || (rev == Integer.MAX_VALUE / 10 && pop > 7))
+                return 0;
+            if (rev < Integer.MIN_VALUE / 10 || (rev == Integer.MIN_VALUE / 10 && pop < -8))
+                return 0;
+
+            //rev 中的值全部左移一位，将刚才弹出的值添加到个位，类似将 pop 从右变推入到 rev 中，全部值往左移动。
+            rev = rev * 10 + pop;
+        }
+        return rev;
+    }
+```
+
+复杂度分析
+
+时间复杂度：*O*(log(x))，`x` 中大约有 log 10 (x) 位数字。
+空间复杂度：*O*(1)。
+
 
 
