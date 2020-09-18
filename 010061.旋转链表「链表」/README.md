@@ -44,7 +44,9 @@
 
 `k / n * n` 表示正好整圈的个数（相当于无意义的移动，因为是整圈，最终也会绕回原点）
 
-`k % n` 表示最终有意义的移动个数，所以可以写成 ` n - k % n -1`
+`k % n` 表示最终有意义的移动个数
+
+所以可以写成 ` n - k % n -1`
 
 ```java
     public ListNode rotateRight(ListNode head, int k) {
