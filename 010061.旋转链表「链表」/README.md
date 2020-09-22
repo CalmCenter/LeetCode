@@ -57,14 +57,14 @@
         // 找到尾节点形成环形链表，并且记录节点总数 n
         ListNode old_tail = head;
         int n;
-        for(n = 0; old_tail.next != null; n++)
+        for(n = 1; old_tail.next != null; n++)
             old_tail = old_tail.next;
         old_tail.next = head;
 
         // 找到新的尾节点 : (n - k % n - 1)
         // 找到新的头节点 : (n - k % n)
         ListNode new_tail = head;
-        for (int i = 0; i < n - k % n; i++)
+        for (int i = 0; i < n - k % n - 1; i++)
             new_tail = new_tail.next;
         ListNode new_head = new_tail.next;
 
