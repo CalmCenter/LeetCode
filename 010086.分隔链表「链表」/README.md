@@ -56,9 +56,9 @@ after
 5. 现在，可以将 `before` 和 `after` 连接，组成所求的链表。
 
 ```
-  0 -> 1 -> 2 -> 2 -> 4 -> 3 -> 5
-                 ↑              ↑                 
-               befor          after
+  0 -> 1 -> 2 -> 2  ->  4 -> 3 -> 5
+                 ↑      ↑         ↑                 
+              befor  after_head  after
 
 ```
 
