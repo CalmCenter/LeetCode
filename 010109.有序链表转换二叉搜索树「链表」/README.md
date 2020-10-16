@@ -282,7 +282,7 @@ globalHead
 ```java
     ListNode assignHead;
 
-    public TreeNode sortedListToBST4(ListNode head) {
+    public TreeNode sortedListToBST(ListNode head) {
         assignHead = head;
         int len = 0;
         while (head != null) {
