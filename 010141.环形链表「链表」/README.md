@@ -16,6 +16,12 @@
 解释：链表中有一个环，其尾部连接到第二个节点。
 ```
 
+**提示：**
+
+- 链表中节点的数目范围是 `[0, 104]`
+- `-105 <= Node.val <= 105`
+- `pos` 为 `-1` 或者链表中的一个 **有效索引** 。
+
 ## 解法 快慢指针
 
 结束条件是如果不存在环，则返回 `false`，如果存在环则会出现 `fast = slow` 的情况，则返回 `true`。
@@ -46,4 +52,28 @@
 - 当链表中存在环时，每一轮移动后，快慢指针的距离将减小一。而初始距离为环的长度，因此至多移动 N 轮。
 
 空间复杂度：O(1)。我们只使用了两个指针的额外空间。
+
+
+## 解法 哈希表
+
+```java
+public class Solution {
+    public boolean hasCycle(ListNode head) {
+        Set<ListNode> seen = new HashSet<ListNode>();
+        while (head != null) {
+            if (!seen.add(head)) {
+                return true;
+            }
+            head = head.next;
+        }
+        return false;
+    }
+}
+```
+
+复杂度分析
+
+时间复杂度：O(N)，其中 N 是链表中的节点数。最坏情况下我们需要遍历每个节点一次。
+
+空间复杂度：O(N)，其中 N 是链表中的节点数。主要为哈希表的开销，最坏情况下我们需要将每个节点插入到哈希表中一次。
 
