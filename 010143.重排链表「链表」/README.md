@@ -117,7 +117,7 @@ l2 = l2_temp   l2 : null
 
 ```java
 
-    public void reorderList2(ListNode head) {
+    public void reorderList(ListNode head) {
         if (head == null) {
             return;
         }
