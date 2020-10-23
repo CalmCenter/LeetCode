@@ -48,6 +48,9 @@ head.next = null;
 // head 为未排序部分，pre 为已排序部分
 head = temp;
 
+
+
+
 dummy -> -1 
   ↑           
  pre  
@@ -70,6 +73,8 @@ while (head != null) {
   head.next = null;
   //...
 
+  
+  
 dummy -> -1    5 
   ↑            ↑
  pre          head
