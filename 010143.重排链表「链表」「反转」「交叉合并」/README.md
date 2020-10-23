@@ -83,9 +83,11 @@ l1 = l1_temp   l1 : 2
 
 l2 -> l1       6 -> 2
 l2 = l2_temp   l2 : 5
+```
 
-循环一次结果 ：1 -> 6 -> 2 -> 3      5 -> 4 
+循环一次结果 ：`1 -> 6 -> 2 -> 3      5 -> 4 `
 
+```
 l1 : 2
 l2 : 5
 l1_temp : 3
@@ -96,9 +98,11 @@ l1 = l1_temp   l1 : 3
 
 l2 -> l1       5 -> 3
 l2 = l2_temp   l2 : 4
+```
 
-循环第二次结果 ：1 -> 6 -> 2 -> 5 -> 3    4 
+循环第二次结果 ：`1 -> 6 -> 2 -> 5 -> 3    4 `
 
+```
 l1 : 3
 l2 : 4
 l1_temp : null
@@ -109,9 +113,9 @@ l1 = l1_temp   l1 : null
 
 l2 -> l1       4 -> null
 l2 = l2_temp   l2 : null
-
-循环第三次结果 ：1 -> 6 -> 2 -> 5 -> 3 -> 4 -> null 
 ```
+
+循环第三次结果 ：`1 -> 6 -> 2 -> 5 -> 3 -> 4 -> null `
 
 代码：
 
@@ -160,7 +164,7 @@ l2 = l2_temp   l2 : null
         return prev;
     }
 
-    //合并链表
+    //交叉合并链表
     public void mergeList(ListNode l1, ListNode l2) {
         ListNode l1_tmp;
         ListNode l2_tmp;
