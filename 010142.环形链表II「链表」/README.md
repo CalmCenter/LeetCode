@@ -57,7 +57,7 @@ public class Solution {
 
 在 `slow` 进入环之后，`fast` 当前不管在环中的哪个结点，都可以在 `slow` 完成一圈之前追上 `slow` ，最极端的情况是 `fast` 刚离开入环点，`slow` 就从那个点进入了环，又因为 `slow` 跑完一圈的时间 `fast` 都跑完两圈了，况且  `fast` 和 `slow` 本来就不在一个起跑线上， `fast` 抢跑了一个结点，那么 `fast`  必然会在 `slow` 跑完一圈前追上 `slow` 。
 
-![图片来源于力扣](https://assets.leetcode-cn.com/solution-static/142/142_fig1.png)
+![图片来源于力扣](https://gitee.com/CalmCenter/Pic/raw/master/leetcode_cycle.png)
 
 ```java
     public ListNode detectCycle(ListNode head) {
