@@ -21,11 +21,21 @@
 
 ## 方法一：递归
 
+```
+ 1 -> 2 -> 3 -> 3 -> 2 -> 1
+ ↑                        ↑
+frontPointer            currentNode
+```
+
+`currentNode` 开始回溯往前走，`frontPointer` 每次回溯都会指向 `next` 。
+
 ```java
     private ListNode frontPointer;
 
     private boolean recursivelyCheck(ListNode currentNode) {
         if (currentNode != null) {
+            // 从后往前 回溯 链表
+            // 只要有一个返回 false ，全部返回 false。
             if (!recursivelyCheck(currentNode.next)) {
                 return false;
             }
@@ -34,6 +44,7 @@
             }
             frontPointer = frontPointer.next;
         }
+        // 最后一个 null 节点不判断，直接返回 true
         return true;
     }
 
@@ -49,6 +60,21 @@
 - 空间复杂度：*O*(*n*)
 
 ## 方法二：快慢指针
+
+找出中间点，反转后半部分，
+
+```
+head : 123321
+```
+
+反转后就是
+
+ ```
+           head : 123
+secondHalfStart : 123
+ ```
+
+开始用 `head` 指针和 `secondHalfStart` 指针判断是否是回文。
 
 ```java
     public boolean isPalindrome(ListNode head) {
