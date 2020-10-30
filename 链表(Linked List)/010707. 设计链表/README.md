@@ -115,7 +115,7 @@ linkedList.get(1);            //返回3
 
 空间复杂度：所有的操作都是 O(1)。
 
-## 解法二 单链表
+## 解法二 双链表
 
 ```java
     public class ListNode {
