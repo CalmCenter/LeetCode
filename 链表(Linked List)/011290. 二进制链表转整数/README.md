@@ -48,3 +48,29 @@
 - 链表的结点总数不超过 `30`。
 - 每个结点的值不是 `0` 就是 `1`。
 
+题解：
+
+`0101` = `（（0 x 2 + 1）x 2 + 0） x 2 + 1` = 5 ,   `res * 2 + cur.val`
+
+```java
+public int getDecimalValue(ListNode head) {
+        ListNode cur = head;
+        int res = 0;
+        while (cur != null) {
+            //cur指针右移一位            
+            //--1-- res:0  cur.val: 1 --> res:1   0 * 2 +  1
+            //--2-- res:1  cur.val: 0 --> res:2   1 * 2 +  0
+            //--3-- res:2  cur.val: 1 --> res:5   2 * 2 +  1
+            //res:5 --> (((0 * 2 +  1) *2  + 0 ) *2   + 1 
+            //                      1* 2^2  + 0 * 2^1 + 1 * 2^0     
+            res = res *2 + cur.val;
+            cur = cur.next;
+        }
+        return res;
+    }
+```
+
+**复杂度分析**
+
+- 时间复杂度：*O*(*N*)，其中 *N* 是链表中的节点个数。
+- 空间复杂度：*O*(1)。
