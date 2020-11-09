@@ -53,7 +53,7 @@
 `0101` = `（（0 x 2 + 1）x 2 + 0） x 2 + 1` = 5 ,   `res * 2 + cur.val`
 
 ```java
-public int getDecimalValue(ListNode head) {
+    public int getDecimalValue(ListNode head) {
         ListNode cur = head;
         int res = 0;
         while (cur != null) {
