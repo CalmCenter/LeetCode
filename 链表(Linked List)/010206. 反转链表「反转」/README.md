@@ -11,6 +11,34 @@
 
 ## 方法一：迭代
 
+首先确定各个指针的位置 `ListNode nextTemp = curr.next;`
+
+```
+null   1 -> 2 -> 3 -> 4 -> 5
+ ↑     ↑    ↑
+prev  curr nextTemp   
+```
+
+然后开始换位置 `curr.next = prev;`
+
+```
+null <- 1     2 -> 3 -> 4 -> 5
+ ↑      ↑     ↑
+prev   curr nextTemp   
+```
+
+重新分配指针 `prev = curr;  curr = nextTemp;`
+
+```
+             curr
+              ↓
+null <- 1     2 -> 3 -> 4 -> 5
+        ↑     ↑
+      prev  nextTemp  
+```
+
+重复上面的操作。
+
 ```java
     public ListNode reverseList(ListNode head) {
         ListNode prev = null;
@@ -31,6 +59,24 @@
 - 空间复杂度：*O*(1)。
 
 ## 方法二：递归
+
+由于是递归，所以得从最后一个节点分析，又因为 `head == null || head.next == null` 返回了 `head` 所以最后一个节点也不做处理，而是直接返回到头部，也就是这里的 `p` ，所以 `head` 参数应该从倒数第二个节点开始分析
+
+```
+ 1 -> 2 -> 3 -> 4 -> 5
+                ↑    ↑
+               head  p   
+```
+
+` head.next.next = head;  head.next = null;`  然后回溯上一层。
+
+```
+ 1 -> 2 -> 3 -> 4 <- 5
+           ↑         ↑
+          head       p  
+```
+
+重复上面的操作。
 
 ```java
     public ListNode reverseList(ListNode head) {
