@@ -95,3 +95,66 @@ null <- 1     2 -> 3 -> 4 -> 5
 时间复杂度：O(n)，假设 n 是列表的长度，那么时间复杂度为 O(n)。
 空间复杂度：O(n)，由于使用递归，将会使用隐式栈空间。递归深度可能会达到 n 层。
 
+## 方法三 迭代双指针优化
+
+```
+
+  head
+   ↓
+   1 -> 2 -> 3 -> 4 -> 5
+   ↑         ↑
+  cur       temp   
+```
+
+开始交换方向 `head.next.next = cur;` 
+
+```
+  head
+   ↓
+   1 <- 2    3 -> 4 -> 5
+   ↑         ↑
+  cur       temp   
+```
+
+`cur = head.next;  head.next = temp;`
+
+```
+   → → → → → →
+   ↑         ↓
+   1 <- 2    3 -> 4 -> 5
+   ↑    ↑    ↑
+ head  cur  temp   
+```
+
+上面是第一次循环
+
+```
+    → → → → → → → → 
+   ↑              ↓
+   1 <- 2 <- 3    4 -> 5
+   ↑         ↑    ↑
+ head       cur  temp   
+```
+
+
+
+```java
+    public ListNode reverseList(ListNode head) {
+        if (head == null) {
+            return null;
+        }
+        ListNode cur = head;
+        while (head.next != null) {
+            ListNode temp = head.next.next;
+            head.next.next = cur;
+            cur = head.next;
+            head.next = temp;
+        }
+        return cur;
+    }
+```
+
+**复杂度分析**
+
+- 时间复杂度：*O*(*n*)，假设 *n* 是列表的长度，时间复杂度是 *O*(*n*)。
+- 空间复杂度：*O*(1)。
