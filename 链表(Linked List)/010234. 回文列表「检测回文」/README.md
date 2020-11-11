@@ -76,6 +76,21 @@ secondHalfStart : 123
 
 开始用 `head` 指针和 `secondHalfStart` 指针判断是否是回文。
 
+如果数据时奇数 
+
+```
+head : 12321
+```
+
+根据快慢指针分割链表，然后反转后是这样的
+
+```
+           head : 123
+secondHalfStart : 12
+```
+
+由于 `while` 判断 `result && p2 != null`  `p2` 是 `secondHalfStart` 的值，所以多出的一个节点不会判断（中间点），只判断其余节点是否相同。
+
 ```java
     public boolean isPalindrome(ListNode head) {
         if (head == null) {
@@ -99,7 +114,7 @@ secondHalfStart : 123
         }        
 
         // 还原链表并返回结果
-        firstHalfEnd.next = reverseList(secondHalfStart);
+        // firstHalfEnd.next = reverseList(secondHalfStart);
         return result;
     }
 
