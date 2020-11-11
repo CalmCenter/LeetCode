@@ -4,7 +4,7 @@
 
 ## 链表基础
 
- [010707. 设计链表](https://github.com/CalmCenter/LeetCode/tree/master/链表(Linked List)/010707. 设计链表)  链表的基础初始化和操作
+ [010707. 设计链表]([https://github.com/CalmCenter/LeetCode/tree/master/%E9%93%BE%E8%A1%A8_LinkedList/010707.%20%E8%AE%BE%E8%AE%A1%E9%93%BE%E8%A1%A8](https://github.com/CalmCenter/LeetCode/tree/master/链表_LinkedList/010707. 设计链表))  链表的基础初始化和操作
 
 ## 快慢指针法
 
