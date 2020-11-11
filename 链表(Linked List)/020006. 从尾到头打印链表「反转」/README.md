@@ -13,6 +13,8 @@
 
 `0 <= 链表长度 <= 10000`
 
+## 题解
+
 ```java
     public int[] reversePrint(ListNode head) {
         Stack<ListNode> stack = new Stack<ListNode>();

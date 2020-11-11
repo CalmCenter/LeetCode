@@ -18,8 +18,8 @@
 
 ```java
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
-        Deque<Integer> stack1 = new LinkedList<Integer>();
-        Deque<Integer> stack2 = new LinkedList<Integer>();
+        Deque<Integer> stack1 = new LinkedList<>();
+        Deque<Integer> stack2 = new LinkedList<>();
         while (l1 != null) {
             stack1.push(l1.val);
             l1 = l1.next;

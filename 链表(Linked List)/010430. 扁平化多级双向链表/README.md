@@ -74,6 +74,34 @@
 - 节点数目不超过 1000
 - 1 <= `Node.val` <= 10^5
 
+```java
+    class Node {
+        public int val;
+        public Node prev;
+        public Node next;
+        public Node child;
+
+        public Node() {
+        }
+
+        public Node(int _val, Node _prev, Node _next, Node _child) {
+            val = _val;
+            prev = _prev;
+            next = _next;
+            child = _child;
+        }
+
+        public void setValue(int _val, Node _prev, Node _next, Node _child) {
+            val = _val;
+            prev = _prev;
+            next = _next;
+            child = _child;
+        }
+    }
+```
+
+
+
 ## 题解：
 
 我们可能会疑问什么情况下会使用这样的数据结构。其中一个场景就是 `git` 分支的简化版本。通过扁平化多级列表，可以认为将所有 `git` 的分支合并在一起。
