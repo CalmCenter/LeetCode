@@ -11,7 +11,7 @@
 输出: 1->2->2->4->3->5
 ```
 
-## 解法
+## 解法 两个链表
 
 1. 初始化两个指针 `before` 和 `after`。在实现中，我们将两个指针初始化为哑 `ListNode`。这有助于减少条件判断。
 
@@ -96,8 +96,34 @@ after
     }
 ```
 
-复杂度分析
+**复杂度分析**
 
 时间复杂度: O(N)，其中 N 是原链表的长度，我们对该链表进行了遍历。
 空间复杂度: O(1)，我们没有申请任何新空间。值得注意的是，我们只移动了原有的结点，因此没有使用任何额外空间。
 
+## 头插法
+
+```java
+    public ListNode partition(ListNode head, int x) {
+        if (head == null)
+            return null;
+
+        ListNode curNode = head;
+        while (curNode.next != null) {
+            if (curNode.next.val < x) {
+                ListNode tmp = curNode.next;
+                curNode.next = curNode.next.next;
+                tmp.next = head;
+                head = tmp;
+            } else
+                curNode = curNode.next;
+        }
+
+        return head;
+    }
+```
+
+**复杂度分析**
+
+时间复杂度: O(N)
+空间复杂度: O(1)
