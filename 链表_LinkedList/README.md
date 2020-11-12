@@ -24,10 +24,11 @@
 因为反转是到着遍历，在单链表中，我们可以拿到以及，到着让**下一个节点**指向**当前节点**，就可以达到反转的目的，具体查看 [010206_反转链表](https://github.com/CalmCenter/LeetCode/tree/master/链表_LinkedList/010206_反转链表)
 
 **反转进阶：** 
-[020006_从尾到头打印链表](https://github.com/CalmCenter/LeetCode/tree/master/链表_LinkedList/020006_从尾到头打印链表) ：反转后保存到数组中
-[010024_两两交换链表中的节点](https://github.com/CalmCenter/LeetCode/tree/master/链表_LinkedList/010024_两两交换链表中的节点) ：两两翻转
-[010025_K 个一组翻转链表](https://github.com/CalmCenter/LeetCode/tree/master/链表_LinkedList/010025_K 个一组翻转链表) ：KK翻转 ~
-[010092_反转链表II](https://github.com/CalmCenter/LeetCode/tree/master/链表_LinkedList/010092_反转链表II) ：翻转某个区间的节点
+
+- [020006_从尾到头打印链表](https://github.com/CalmCenter/LeetCode/tree/master/链表_LinkedList/020006_从尾到头打印链表) ：反转后保存到数组中
+- [010024_两两交换链表中的节点](https://github.com/CalmCenter/LeetCode/tree/master/链表_LinkedList/010024_两两交换链表中的节点) ：两两翻转
+- [010025_K 个一组翻转链表](https://github.com/CalmCenter/LeetCode/tree/master/链表_LinkedList/010025_K个一组翻转链表) ：KK翻转 ~
+- [010092_反转链表II](https://github.com/CalmCenter/LeetCode/tree/master/链表_LinkedList/010092_反转链表II) ：翻转某个区间的节点
 
 ## 基础功能：删除节点
 
@@ -40,14 +41,14 @@
 [020022_链表中倒数第k个节点](https://github.com/CalmCenter/LeetCode/tree/master/链表_LinkedList/020022_链表中倒数第k个节点) 笨鸟指针（我自己想的 ~），就是 `fast` 指针先走 `k` 步然后与 `slow` 一起前进，他们之前会一直相差 `k` 步，当 `fase` 到达末尾时，`slow` 就是倒数第 `k` 个啊 ~ 
 然后可以看这题[010019_删除链表的倒数第N个节点](https://github.com/CalmCenter/LeetCode/tree/master/链表_LinkedList/010019_删除链表的倒数第N个节点)  上一题就是为这道题做铺垫，寻到然后进行删除，删除时我们就需要考虑到是 寻找时让 `fast` 在快一个节点，`slow` 就可以拿到倒数第 `k+1` 的节点，可以方便的进行删除，还是拿到第 `k` 的节点使用 `010237` 刚才讲过的删除方式。这两种方式可以
 
-[010082_删除排序链表中的重复元素II](https://github.com/CalmCenter/LeetCode/tree/master/链表_LinkedList/010082_删除排序链表中的重复元素II) 删除**有序链表**中的重复元素，只要有重复的就都删除，保留没有重复的元素。
-[010083_删除排序链表中的重复元素](https://github.com/CalmCenter/LeetCode/tree/master/链表_LinkedList/010083_删除排序链表中的重复元素) 删除**有序链表**中的重复元素，使得每个元素只出现一次
-[030201_移除重复节点](https://github.com/CalmCenter/LeetCode/tree/master/链表_LinkedList/030201_移除重复节点) 删除**无序链表**中的重复元素，使得每个元素只出现一次
+- [010082_删除排序链表中的重复元素II](https://github.com/CalmCenter/LeetCode/tree/master/链表_LinkedList/010082_删除排序链表中的重复元素II) 删除**有序链表**中的重复元素，只要有重复的就都删除，保留没有重复的元素。
+- [010083_删除排序链表中的重复元素](https://github.com/CalmCenter/LeetCode/tree/master/链表_LinkedList/010083_删除排序链表中的重复元素) 删除**有序链表**中的重复元素，使得每个元素只出现一次
+- [030201_移除重复节点](https://github.com/CalmCenter/LeetCode/tree/master/链表_LinkedList/030201_移除重复节点) 删除**无序链表**中的重复元素，使得每个元素只出现一次
 
 ## 基础功能：合并
 
-我们可以合并两个有序链表，最简单的方式就是循环比大小然后重新组织链表，还可以提高逼格使用递归，具体请看 [010021. 合并两个有序链表](https://github.com/CalmCenter/LeetCode/tree/master/链表(Linked List)/010021. 合并两个有序链表「合并」) 
-当前也可以合并多个有序链表，还能循环比大小吗？有没有什么更好的方法呢？具体请看：[010023. 合并 K 个升序链表](https://github.com/CalmCenter/LeetCode/tree/master/链表(Linked List)/010023. 合并 K 个升序链表「堆」「分治算法」「多个链表合并」) 
+我们可以合并两个有序链表，最简单的方式就是循环比大小然后重新组织链表，还可以提高逼格使用递归，具体请看 [010021_合并两个有序链表](https://github.com/CalmCenter/LeetCode/tree/master/链表_LinkedList/010021_合并两个有序链表)
+当前也可以合并多个有序链表，还能循环比大小吗？有没有什么更好的方法呢？具体请看：[010023_合并K个升序链表](https://github.com/CalmCenter/LeetCode/tree/master/链表_LinkedList/010023_合并K个升序链表)
 
 ## 链表排序
 
