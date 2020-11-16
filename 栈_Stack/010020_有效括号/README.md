@@ -61,7 +61,7 @@
         for (int i = 0; i < n; i++) {
             char ch = s.charAt(i);
             if (pairs.containsKey(ch)) {
-                // 如果 ch 中包含 后半部分，但是与 stack 栈顶所对应的前半部分不同，证明是 不规范的。
+                // 如果 ch 是后半部分，但是与 stack 栈顶所对应的前半部分不同，证明是 不规范的。
                 if (stack.isEmpty() || stack.peek() != pairs.get(ch)) {
                     return false;
                 }
