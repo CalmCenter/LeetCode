@@ -111,6 +111,8 @@
   - 如果 predecessor 的右孩子为空，则将其右孩子指向 x，然后访问x 的左孩子，即 x = x.left。
   - 如果 predecessor 的右孩子不为空，则此时其右孩子指向 x，说明我们已经遍历完 x 的左子树，我们将 predecessor 的右孩子置空，将 x 的值加入答案数组，然后访问 x 的右孩子，即 x = x.right。
 
+重点操作，`root` 节点的 **左节点** 的 **最右子节点** 的 `next` 指向 `root`
+
 
 ```java
     public List<Integer> inorderTraversal3(TreeNode root) {
