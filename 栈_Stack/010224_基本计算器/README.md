@@ -64,7 +64,6 @@
                     n = 0;
                     operand = 0;
                 }
-
                 if (ch == '(') {
                     //（4）
                     int res = evaluateExpr(stack);
@@ -77,7 +76,6 @@
             }
         }
 
-        
         if (n != 0) {
             stack.push(operand);
         }
@@ -111,3 +109,53 @@
 
 - 时间复杂度：O(N)，其中 N 指的是字符串的长度。
 - 空间复杂度：O(N)
+
+# 方法二 栈和不反转字符串
+
+```java
+   public int calculate(String s) {
+
+        Deque<Integer> stack = new LinkedList<>();
+        int operand = 0;
+        int result = 0; // For the on-going result
+        int sign = 1;  // 1 表示 + , -1 表示 -
+
+        for (int i = 0; i < s.length(); i++) {
+            char ch = s.charAt(i);
+            if (Character.isDigit(ch)) {
+                // 计算数值，可能是多位数
+                operand = 10 * operand + (int) (ch - '0');
+            } else if (ch == '+') {
+                result += sign * operand;
+                sign = 1;
+                operand = 0;
+            } else if (ch == '-') {
+                result += sign * operand;
+                sign = -1;
+                operand = 0;
+            } else if (ch == '(') {
+                // 记录括号外的值，以及括号内的值的正负情况
+                stack.push(result);
+                stack.push(sign);
+                // 进入新的 括号，初始化 符号 以及 结果
+                sign = 1;
+                result = 0;
+            } else if (ch == ')') {
+                // 计算当前的值 因为 ) 之前肯定是数字，数字只做了存储，没有计算
+                result += sign * operand;
+                // 计算 括号内 的 正负情况
+                result *= stack.pop();
+                // 计算 括号外 与 括号内的值 的计算
+                result += stack.pop();
+                operand = 0;
+            }
+        }
+        return result + (sign * operand);
+    }
+```
+
+**复杂度分析**
+
+时间复杂度：O(N)，其中 N 指的是字符串的长度。这种方法与前一种方法的区别在于，这种方法的每个字符都将被精确的处理一次。但是前面的方法中，每个字符可能被处理两次，一次是被添加到栈上，另一次是被弹出处理最终结果。这就是为什么这种方法更快的原因。
+空间复杂度：O(N)，其中 N 指的是字符串的长度。
+
