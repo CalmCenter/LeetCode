@@ -40,7 +40,7 @@
         // 记录数值计算方式
         char operation = '+';
         for (int i = 0; i < chs.length; i++) {
-            if (chs[i] == ' ') {
+            if (chs[i] == ' ' && i < chs.length - 1) {
                 continue;
             }
             if (Character.isDigit(chs[i])) {
