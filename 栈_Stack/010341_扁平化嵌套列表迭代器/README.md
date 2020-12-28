@@ -18,7 +18,34 @@
 解释: 通过重复调用 next 直到 hasNext 返回 false，next 返回的元素的顺序应该是: [1,4,6]。
 ```
 
-## 题解
+**NestedInteger**
+
+```java
+public interface NestedInteger {
+    // 如果其中存的是一个整数，则返回 true，否则返回 false
+    public boolean isInteger();
+
+    // 如果其中存的是一个整数，则返回这个整数，否则返回 null
+    public Integer getInteger();
+
+    // 如果其中存的是一个列表，则返回这个列表，否则返回 null
+    public List<NestedInteger> getList();
+}
+```
+
+## 题解 递归
+
+把一个 `NestedInteger` 扁平化，**这不就等价于遍历一棵 N 叉树的所有「叶子节点」吗**？把所有叶子节点都拿出来，不就可以作为迭代器进行遍历了吗？
+
+`N` 叉树的遍历
+
+```java
+void traverse(TreeNode root) {
+    for (TreeNode child : root.children)
+        traverse(child);
+```
+
+把 `List<NestedInteger> ` 一次性提取到 `List` 当中，再使用 `ListIterator` 的 `hasNext` 和 `next` 即可。
 
 ```java
 class NestedIterator implements Iterator<Integer> {
@@ -59,11 +86,15 @@ class NestedIterator implements Iterator<Integer> {
 }
 ```
 
+## 迭代器
 
+上面的解法中一次性算出了所有叶子节点的值，全部装到 `result` 列表，也就是内存中，`next` 和 `hasNext` 方法只是在对 `result` 列表做迭代。如果输入的规模非常大，构造函数中的计算就会很慢，而且很占用内存。
 
+一般的迭代器求值应该是「惰性的」，也就是说，如果你要一个结果，我就算一个（或是一小部分）结果出来，而不是一次把所有结果都算出来。
 
+**调用 `hasNext` 时，如果 `nestedList` 的第一个元素是列表类型，则不断展开这个元素，直到第一个元素是整数类型**。
 
-
+由于调用 `next` 方法之前一定会调用 `hasNext` 方法，这就可以保证每次调用 `next` 方法的时候第一个元素是整数型，直接返回并删除第一个元素即可。
 
 ```java
 public class NestedIterator implements Iterator<Integer> {
