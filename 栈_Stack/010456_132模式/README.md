@@ -48,7 +48,7 @@
         for (int j = nums.length - 1; j >= 0; j--) {
             // 跳过 Min 本身
             if (nums[j] > min[j]) {
-                // stack.peek() 由于是倒叙循环，所以表示 后一个元素
+                // stack.peek() 由于是倒序循环，所以表示 后一个元素
                 // 当后一个元素 > 当前最小值时  这里表示题目中的(ai < ak)，才能跳过 while
                 while (!stack.isEmpty() && stack.peek() <= min[j])
                     stack.pop();
