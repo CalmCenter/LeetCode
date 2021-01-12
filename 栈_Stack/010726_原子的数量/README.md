@@ -116,7 +116,7 @@ formula = "K4(ON(SO3)2)2"
 # 题解二 栈
 
 ```java
-    public String countOfAtoms2(String formula) {
+    public String countOfAtoms(String formula) {
         int length = formula.length();
         Deque<Map<String, Integer>> stack = new LinkedList<>();
         stack.push(new TreeMap());
