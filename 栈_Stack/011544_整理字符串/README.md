@@ -44,7 +44,7 @@
 # 题解
 
 ```java
-    public String makeGood2(String s) {
+    public String makeGood(String s) {
         int idx = -1;
         char[] ss = s.toCharArray();
         for (int i = 0; i < ss.length; ++i) {
@@ -68,5 +68,5 @@
 
 **复杂度分析**
 
-- 时间复杂度：O(N)
-- 空间复杂度：O(N) 或 O(1)
+- 时间复杂度：O(N)，其中 N 为字符串 `s` 的长度。我们要遍历字符串 `s` 的每一个字符，而对每个字符都只需要常数时间的操作。
+- 空间复杂度： O(1)
