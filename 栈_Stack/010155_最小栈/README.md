@@ -75,6 +75,65 @@ minStack.getMin();   --> 返回 -2.
 如果差值 `diff` 大于等于 `0` ，说明要出栈的值大于等于当前 `min` ，那么要出栈的值在入栈的时候没有更新 `min` ，返回 `min+diff` ；如果插值 `diff` 小于 `0`，说明当前要出栈的值就是 `min` (因为入栈的时候我们选择的就是 `min` 和入栈元素的最小值)，同时，通过 `min-diff` 计算出之前 `min` 要注意的是 `diff` 可能会超出 `int` 范围，类似于 `Integer.MAX_VALUE - 1` 这种，所以 `diff` 要用 `Long` 存
 
 ```java
+        MinStack minStack = new MinStack();
+        minStack.push(-2);
+        minStack.push(0);
+        minStack.push(-3);
+        System.out.println(minStack.getMin());
+        minStack.pop();
+        System.out.println(minStack.top());
+        System.out.println(minStack.getMin());
+```
+
+数据表示：
+
+```
+-2 0 -3
+ ↑ 
+stack：0
+min：-2
+
+-----------
+push(0) = 0 - (-2) = 2
+
+-2 0 -3
+   ↑ 
+stack：0,2
+min：-2
+
+-----------
+push(-3) = (-3) - (-2) = -1
+
+-2 0 -3
+      ↑ 
+stack：0,2,-1
+min：-3
+
+-----------
+getMin()
+
+stack：0,2,-1
+min：-3
+getMin：-3
+
+-----------
+pop
+
+stack：0,2
+diff：-1
+min：(-3) - (-1) = -2 
+
+-----------
+top = 
+
+stack：0,2
+diff：-1
+min：(-3) - (-1) = -2 
+```
+
+
+
+```java
     Integer min = null;
     Deque<Long> data = new LinkedList<>();
 
