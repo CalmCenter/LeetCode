@@ -1,10 +1,12 @@
 # 链表中常用的技巧
 
-[LeetCode-LinkedList](https://leetcode-cn.com/problemset/all/?topicSlugs=linked-list) 
+题目来自于 [LeetCode-LinkedList](https://leetcode-cn.com/problemset/all/?topicSlugs=linked-list) 
 
 ## 链表基础
 
  [010707.设计链表](https://github.com/CalmCenter/LeetCode/tree/master/链表_LinkedList/010707_设计链表)  `基础` 链表的基础初始化和操作
+
+双指针练习 [011721_交换链表中的节点](https://github.com/CalmCenter/LeetCode/tree/master/链表_LinkedList/011721_交换链表中的节点)
 
 ## 快慢指针法
 
@@ -17,6 +19,8 @@
 **使用场景 2：链表中是否存在环**
 
 因为快指针是慢指针速度的两倍，所以如果存在环，快指针一定会追上慢指针，这样就可以判断是否存在环 [010141_环形链表](https://github.com/CalmCenter/LeetCode/tree/master/链表_LinkedList/010141_环形链表) `基础、面试题`，如果要返回入环点，还需要进一步利用数学知识分析节点长度的关系 [010142_环形链表II](https://github.com/CalmCenter/LeetCode/tree/master/链表_LinkedList/010142_环形链表II) `面试题`
+
+
 
 ## 递归
 
