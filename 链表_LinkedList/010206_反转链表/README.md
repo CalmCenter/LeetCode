@@ -95,6 +95,21 @@ null <- 1     2 -> 3 -> 4 -> 5
 时间复杂度：O(n)，假设 n 是列表的长度，那么时间复杂度为 O(n)。
 空间复杂度：O(n)，由于使用递归，将会使用隐式栈空间。递归深度可能会达到 n 层。
 
+```c++
+public:
+    ListNode* reverseList(ListNode* head) {
+        if (!head || !head->next) {
+            return head;
+        }
+        ListNode* newHead = reverseList(head->next);
+        head->next->next = head;
+        head->next = nullptr;
+        return newHead;
+    }
+```
+
+
+
 ## 方法三 迭代双指针优化
 
 ```
@@ -110,9 +125,9 @@ null <- 1     2 -> 3 -> 4 -> 5
 ```
   head
    ↓
-   1 <- 2    3 -> 4 -> 5
-   ↑         ↑
-  cur       temp   
+   1 <--> 2    3 -> 4 -> 5
+   ↑           ↑
+  cur         temp   
 ```
 
 `cur = head.next;  head.next = temp;`
@@ -125,7 +140,7 @@ null <- 1     2 -> 3 -> 4 -> 5
  head  cur  temp   
 ```
 
-上面是第一次循环
+上面是一次循环，之后就类似了
 
 ```
     → → → → → → → → 

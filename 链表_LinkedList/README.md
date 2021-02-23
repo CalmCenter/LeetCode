@@ -20,8 +20,6 @@
 
 因为快指针是慢指针速度的两倍，所以如果存在环，快指针一定会追上慢指针，这样就可以判断是否存在环 [010141_环形链表](https://github.com/CalmCenter/LeetCode/tree/master/链表_LinkedList/010141_环形链表) `基础、面试题`，如果要返回入环点，还需要进一步利用数学知识分析节点长度的关系 [010142_环形链表II](https://github.com/CalmCenter/LeetCode/tree/master/链表_LinkedList/010142_环形链表II) `面试题`
 
-
-
 ## 递归
 
 递归在链表中，就是一个倒序遍历（从后往前遍历）。
