@@ -185,7 +185,7 @@ hei : 0 3 2 1 1 0 2
 ```java
     public int trap(int[] height) {
         int ans = 0, current = 0;
-        Deque<Integer> stack = new LinkedList<>();
+        Deque<Integer> stack = new ArrayDeque<>();
         while (current < height.length) {
             // 查看 height[stack.peek()](左柱子) 是否 < height[current](右柱子)
             while (!stack.isEmpty() && height[current] > height[stack.peek()]) {

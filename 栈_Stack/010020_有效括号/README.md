@@ -57,7 +57,7 @@
             put(']', '[');
             put('}', '{');
         }};
-        Deque<Character> stack = new LinkedList<>();
+        Deque<Character> stack = new ArrayDeque<>();
         for (int i = 0; i < n; i++) {
             char ch = s.charAt(i);
             if (pairs.containsKey(ch)) {

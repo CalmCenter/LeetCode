@@ -74,7 +74,7 @@
 # 方法二 栈
 
 ```java
-    public static int evalRPN2(String[] tokens) {
+    public static int evalRPN(String[] tokens) {
         Deque<Integer> numStack = new LinkedList<>();
         Integer op1, op2;
         for (String s : tokens) {

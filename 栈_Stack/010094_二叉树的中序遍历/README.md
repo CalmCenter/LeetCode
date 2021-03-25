@@ -79,7 +79,7 @@
 ```java
     public List<Integer> inorderTraversal(TreeNode root) {
         List<Integer> res = new ArrayList<>();
-        Deque<TreeNode> stk = new LinkedList<>();
+        Deque<TreeNode> stk = new ArrayDeque<>();
         while (root != null || !stk.isEmpty()) {
             // 寻找左端的节点
             while (root != null) {

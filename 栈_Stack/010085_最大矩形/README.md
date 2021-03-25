@@ -91,7 +91,7 @@
 
 代码：
 
-```
+```java
     public int maximalRectangle(char[][] matrix) {
 
         if (matrix.length == 0) return 0;
@@ -153,7 +153,7 @@
  1 2 3 4 5 
 ```
 
-第二行
+第三行
 
 ```
  ■   ■
