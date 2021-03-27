@@ -26,19 +26,27 @@ Deque<Integer> stack = new ArrayDeque<>();
 
 继承使得子类继承了父类的所有公有方法，因此，`Stack` 也可以在任何位置添加或者删除元素。这显然破坏了栈这种结构的封装。更多说明请参考上面链接。
 
-# 基础题目
+## 基础题目
 
 [010020_有效括号](https://github.com/CalmCenter/LeetCode/tree/master/栈_Stack/010020_有效括号)  `基础` 左右括号 匹配
 
 [010071_简化路径](https://github.com/CalmCenter/LeetCode/tree/master/栈_Stack/010071_简化路径)  `基础`  通过栈操作路径的前进和后退，输出最终路径
 
-[010150_逆波兰表达式求值](https://github.com/CalmCenter/LeetCode/tree/master/栈_Stack/010150_逆波兰表达式求值) `基础` 通过栈计算 [ 逆波兰表示法](https://baike.baidu.com/item/逆波兰式/128437) 得出的结果
-
 [010155_最小栈](https://github.com/CalmCenter/LeetCode/tree/master/栈_Stack/010155_最小栈)  `基础` `进阶思维` 记录栈中最小值
+
+[010394_字符串解码](https://github.com/CalmCenter/LeetCode/tree/master/栈_Stack/010394_字符串解码) `基础` 
+
+
+
+## 计算
+
+[010150_逆波兰表达式求值](https://github.com/CalmCenter/LeetCode/tree/master/栈_Stack/010150_逆波兰表达式求值) `基础` 通过栈计算 [ 逆波兰表示法](https://baike.baidu.com/item/逆波兰式/128437) 得出的结果
 
 [010224_基本计算器](https://github.com/CalmCenter/LeetCode/tree/master/栈_Stack/010224_基本计算器) `基础` 使用栈完成数字的加减法
 
-[010227_基本计算器 II](https://github.com/CalmCenter/LeetCode/tree/master/栈_Stack/010227_基本计算器 II) `基础` 栈的基本使用，思路上先计算乘除，加减只做保存，最后同一加在一起
+[010227_基本计算器 II](https://github.com/CalmCenter/LeetCode/tree/master/栈_Stack/010227_基本计算器 II) `基础` 栈的基本使用，思路上先计算乘除，加减只做保存，最后统一加在一起
+
+
 
 ## 队列与栈
 
@@ -47,6 +55,8 @@ Deque<Integer> stack = new ArrayDeque<>();
 [010225_用队列实现栈](https://github.com/CalmCenter/LeetCode/tree/master/栈_Stack/010225_用队列实现栈) 加深对栈数据结构与队列数据结构的理解
 
 [010232_用栈实现队列](https://github.com/CalmCenter/LeetCode/tree/master/栈_Stack/010232_用栈实现队列)
+
+
 
 ## 单调栈
 
@@ -60,11 +70,21 @@ Deque<Integer> stack = new ArrayDeque<>();
 
 
 
+## 贪心算法
+
+贪心算法（又称贪婪算法）是指，在对问题求解时，总是做出在当前看来是最好的选择。也就是说，不从整体最优上加以考虑，算法得到的是在某种意义上的**局部最优解。**
+
+贪心算法不是对所有问题都能得到整体最优解，关键是贪心策略的选择。
+
+[010316_去除重复字母](https://github.com/CalmCenter/LeetCode/tree/master/栈_Stack/010316_去除重复字母) `贪心` `局部单调递增栈` 
+
+[010402_移掉K位数字](https://github.com/CalmCenter/LeetCode/tree/master/栈_Stack/010402_移掉K位数字) `贪心` `单调递增栈`
 
 
 
 
-## 二叉树遍历
+
+## 二叉树
 
 涉及到栈的遍历，递归以及`Morris` 
 
@@ -76,7 +96,7 @@ Deque<Integer> stack = new ArrayDeque<>();
 
 [010173_ 二叉搜索树迭代器](https://github.com/CalmCenter/LeetCode/tree/master/栈_Stack/010173_ 二叉搜索树迭代器)
 
-
+[010331_验证二叉树的前序序列化](https://github.com/CalmCenter/LeetCode/tree/master/栈_Stack/010331_验证二叉树的前序序列化) `思路`
 
 
 
