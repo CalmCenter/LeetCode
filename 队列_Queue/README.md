@@ -179,3 +179,25 @@ public class CircularQueue {
 
 [010199_二叉树的右视图](https://github.com/CalmCenter/LeetCode/tree/master/队列_Queue/010199_二叉树的右视图) `深度优先搜索 ` `广度优先搜索` 
 
+[010621_任务调度器](https://github.com/CalmCenter/LeetCode/tree/master/队列_Queue/010621_任务调度器) `贪心算法`
+
+### 循环队列
+
+[010622_设计循环队列](https://github.com/CalmCenter/LeetCode/tree/master/队列_Queue/010622_设计循环队列) 
+
+[010641_设计循环双端队列](https://github.com/CalmCenter/LeetCode/tree/master/队列_Queue/010641_设计循环双端队列)
+
+
+
+
+
+[010862_和至少为K的最短子数组](https://github.com/CalmCenter/LeetCode/tree/master/队列_Queue/010862_和至少为K的最短子数组) `动态规划优化暴力重复求和` 
+
+[010933_最近的请求次数](https://github.com/CalmCenter/LeetCode/tree/master/队列_Queue/010933_最近的请求次数)
+
+
+
+
+
+
+
