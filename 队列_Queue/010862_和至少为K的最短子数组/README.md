@@ -136,10 +136,60 @@ preSum[i] = A[0] + A[1] + ... + A[i-1]
     }
 ```
 
-```
-       1 1 -1 1 2
-sum: 0 1 2  1 2 4
 
+
+正常情况：
+
+```
+     0 1 2  3 4 5
+     1 1 -1 1 2
+sum: 0 1 2  1 2 4
+         ↑
+         i
+monoq: 0 1 2    
+k = 3
+```
+
+出现负数（负数抵消部分无意义，所以要删除）：
+
+```
+     0 1 2  3 4 5
+     1 1 -1 1 2
+sum: 0 1 2  1 2 4
+            ↑
+            i
+monoq: 0 1 2
+sum[i] <= sum[monoq.getLast()]（1 < 2）   monoq.removeLast()
+
+sum: 0 1 2  1 2 4
+            ↑
+            i
+monoq: 0 1
+sum[i] <= sum[monoq.getLast()]（1 = 1）   monoq.removeLast()   monoq.addLast(i)
+
+sum: 0 1 2  1 2 4
+            ↑
+            i
+monoq: 0 3
+```
+
+这里为什么要删除？
+
+因为如果 `sum[5] - sum[1] >= 3`  必然有 `sum[5] - sum[3] >= 3` ， 因为 `sum[1] 和 sum[2]` 相互抵消。
+
+```
+     0 1 2  3 4 5
+sum: 0 1 2  1 2 4
+              ↑
+              i
+monoq: 0 3 4  
+
+     0 1 2  3 4 5
+sum: 0 1 2  1 2 4
+                ↑
+                i
+monoq: 3 4  
+sum[i] - sum[monoq.getFirst()] >= K （4 - 0 >= 3）     ans = 
 ```
 
 
