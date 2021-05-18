@@ -175,7 +175,9 @@ monoq: 0 3
 
 这里为什么要删除？
 
-因为如果 `sum[5] - sum[1] >= 3`  必然有 `sum[5] - sum[3] >= 3` ， 因为 `sum[1] 和 sum[2]` 相互抵消。
+因为如果 `sum[5] - sum[1] >= 3`  必然有 `sum[5] - sum[3] >= 3` ， 因为 `sum[1] 和 sum[2]` 相互抵消，算在子数组里只会添加无意义的长度。
+
+继续遍历
 
 ```
      0 1 2  3 4 5
@@ -188,13 +190,12 @@ monoq: 0 3 4
 sum: 0 1 2  1 2 4
                 ↑
                 i
-monoq: 3 4  
-sum[i] - sum[monoq.getFirst()] >= K （4 - 0 >= 3）     ans = 
+monoq: [0] 3 4  
+sum[i] - sum[monoq.getFirst()] >= K （4 - 0 >= 3）     ans = 5 - 0 = 5
+
+monoq: [3] 4  
+sum[i] - sum[monoq.getFirst()] >= K （4 - 1 >= 3）     ans = 5 - 3 = 2
 ```
-
-
-
-
 
 **复杂度分析**
 
