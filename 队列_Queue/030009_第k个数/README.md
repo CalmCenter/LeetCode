@@ -60,7 +60,7 @@ p3:2 , p5:1 , p7:1
 - **时间复杂度 O(k)**
 - **空间复杂度 O(k) **
 
-# 题解二 堆
+# 题解二 优先队列
 
 ```java
     public int getKthMagicNumber2(int k) {
@@ -80,7 +80,7 @@ p3:2 , p5:1 , p7:1
                 PriorityQueue.add( val * 7 );
             }
             // 返回第k个位数值
-            if ( list.size() == k ) {
+            if (list.size() == k) {
                 return val.intValue();
             }
         }

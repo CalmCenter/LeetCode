@@ -191,13 +191,13 @@ public class CircularQueue {
 
 
 
-[010862_和至少为K的最短子数组](https://github.com/CalmCenter/LeetCode/tree/master/队列_Queue/010862_和至少为K的最短子数组) `动态规划优化暴力重复求和` 
+[010862_和至少为K的最短子数组](https://github.com/CalmCenter/LeetCode/tree/master/队列_Queue/010862_和至少为K的最短子数组) `动态规划优化暴力重复求和`  `队列优化无意义数据` 
 
-[010933_最近的请求次数](https://github.com/CalmCenter/LeetCode/tree/master/队列_Queue/010933_最近的请求次数)
+[010933_最近的请求次数](https://github.com/CalmCenter/LeetCode/tree/master/队列_Queue/010933_最近的请求次数) `简单`  `基础` 
 
+[011856_子数组最小乘积的最大值](https://github.com/CalmCenter/LeetCode/tree/master/队列_Queue/011856_子数组最小乘积的最大值) `单调栈` 
 
+[020059_滑动窗口的最大值](https://github.com/CalmCenter/LeetCode/tree/master/队列_Queue/020059_滑动窗口的最大值) `滑动窗口`
 
-
-
-
+[030009_第k个数](https://github.com/CalmCenter/LeetCode/tree/master/队列_Queue/030009_第k个数) `优先队列`
 
